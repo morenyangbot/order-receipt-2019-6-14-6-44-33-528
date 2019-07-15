@@ -40,15 +40,19 @@ public class OrderReceipt {
         return o.getLineItems().stream().mapToDouble(LineItem::totalAmount).sum() + calculateSalesTax();
     }
 
+    private void appendTaxAndTotalAmount(StringBuilder output) {
+        // prints the state tax
+        output.append("Sales Tax").append('\t').append(calculateSalesTax());
+        // print total amount
+        output.append("Total Amount").append('\t').append(calculateTotal());
+    }
+
     public String printReceipt() {
         StringBuilder output = new StringBuilder();
         appendReceiptHeader(output);
         appendCustomerInfo(output);
         appendOrderItems(output);
-        // prints the state tax
-        output.append("Sales Tax").append('\t').append(calculateSalesTax());
-        // print total amount
-        output.append("Total Amount").append('\t').append(calculateTotal());
+        appendTaxAndTotalAmount(output);
         return output.toString();
     }
 }
