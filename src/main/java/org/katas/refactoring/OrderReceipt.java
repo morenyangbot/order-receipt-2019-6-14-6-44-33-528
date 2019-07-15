@@ -17,7 +17,7 @@ public class OrderReceipt {
         builder.append("======Printing Orders======\n");
     }
 
-    private void appendCustomerInfo(StringBuilder builder, Order order) {
+    private void appendCustomerInfo(StringBuilder builder) {
         builder.append(o.getCustomerName()).append(o.getCustomerAddress());
     }
 
@@ -25,7 +25,7 @@ public class OrderReceipt {
         StringBuilder output = new StringBuilder();
 
         appendReceiptHeader(output);
-        appendCustomerInfo(output, o);
+        appendCustomerInfo(output);
 
         // prints lineItems
         double totSalesTx = 0d;
