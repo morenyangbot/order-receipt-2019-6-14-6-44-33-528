@@ -13,17 +13,19 @@ public class OrderReceipt {
         this.o = o;
     }
 
+    private void appendReceiptHeader(StringBuilder builder) {
+        builder.append("======Printing Orders======\n");
+    }
+
+    private void appendCustomerInfo(StringBuilder builder, Order order) {
+        builder.append(o.getCustomerName()).append(o.getCustomerAddress());
+    }
+
     public String printReceipt() {
         StringBuilder output = new StringBuilder();
 
-        // print headers
-        output.append("======Printing Orders======\n");
-
-        // print date, bill no, customer name
-//        output.append("Date - " + order.getDate();
-        output.append(o.getCustomerName());
-        output.append(o.getCustomerAddress());
-//        output.append(order.getCustomerLoyaltyNumber());
+        appendReceiptHeader(output);
+        appendCustomerInfo(output, o);
 
         // prints lineItems
         double totSalesTx = 0d;
