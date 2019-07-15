@@ -7,6 +7,8 @@ package org.katas.refactoring;
  * total sales tax) and prints it.
  */
 public class OrderReceipt {
+    private static final double TAX_RATE = .10;
+
     private Order o;
 
     public OrderReceipt(Order o) {
@@ -31,7 +33,7 @@ public class OrderReceipt {
     }
 
     private double calculateSalesTax() {
-        return o.getLineItems().stream().map(LineItem::totalAmount).mapToDouble(item -> item * .10).sum();
+        return o.getLineItems().stream().map(LineItem::totalAmount).mapToDouble(item -> item * TAX_RATE).sum();
     }
 
     private double calculateTotal() {
